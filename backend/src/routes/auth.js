@@ -1,31 +1,39 @@
 const express = require("express");
+const UserModel = require("../models/User"); // Adjust the path if necessary
 const authRouter = express.Router();
 
+authRouter.post("/api/signup", async (req, res) => {
+  const { username, email, password } = req.body;  // Changed "name" to "username"
 
+  // Check if all fields are provided
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: "All fields are required." });
+  }
 
-authRouter.post("/signup", async (req, res) => {
   try {
-    let { name, email, password } = req.body;
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists." });
+    }
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Create a new user instance
+    const newUser = new UserModel({ username, email, password });
+    await newUser.save(); // Save the user to the database
 
-    // Create a new alumni record
-    const user = new userRegis({
-      admNo,
-      name,
-      branch,
-      graduationDate: parsedGraduationDate,
-      email,
-      password: hashedPassword,
-      regStatus: true,
+    const token = newUser.getJWT(); // Generate a JWT token
+
+    res.status(201).json({
+      user: {
+        _id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+      },
+      token,
     });
-
-    // Save the alumni record to the database
-    await alumni.save();
-    res.status(201).send({ message: "Registration Success", alumni });
   } catch (error) {
-    console.log(error);
-    res.status(500).send("Sign Up failed. Please try again.");
+    console.error("Error during sign-up:", error);
+    res.status(500).json({ message: "Server error. Please try again later." });
   }
 });
+
+module.exports = authRouter;

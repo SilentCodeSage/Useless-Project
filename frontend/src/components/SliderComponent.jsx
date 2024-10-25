@@ -4,6 +4,9 @@ import axios from "axios";
 const SliderComponent = () => {
   const [sentimentality, setSentimentality] = useState(5);
   const [absurdity, setAbsurdity] = useState(5);
+  const [tone, setTone] = useState(5); // New tone slider
+  const [urgency, setUrgency] = useState(5); // New urgency slider
+  const [emotionalImpact, setEmotionalImpact] = useState(5); // New emotional impact slider
   const [situation, setSituation] = useState("");
   const [excuses, setExcuses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -45,6 +48,9 @@ const SliderComponent = () => {
         prompt: situation,
         sentimentality,
         absurdity,
+        tone,
+        urgency,
+        emotionalImpact,
       });
 
       const excusesText = response.data.candidates[0].content.parts[0].text;
@@ -92,7 +98,7 @@ const SliderComponent = () => {
           />
         </div>
 
-        <div>
+        <div className="mb-8">
           <label className="block text-lg text-gray-700 mb-2">
             Absurdity: {absurdity}
           </label>
@@ -103,6 +109,48 @@ const SliderComponent = () => {
             value={absurdity}
             onChange={(e) => setAbsurdity(Number(e.target.value))}
             className="range range-secondary w-full"
+          />
+        </div>
+
+        <div className="mb-8">
+          <label className="block text-lg text-gray-700 mb-2">
+            Tone: {tone}
+          </label>
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value={tone}
+            onChange={(e) => setTone(Number(e.target.value))}
+            className="range range-tertiary w-full"
+          />
+        </div>
+
+        <div className="mb-8">
+          <label className="block text-lg text-gray-700 mb-2">
+            Urgency: {urgency}
+          </label>
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value={urgency}
+            onChange={(e) => setUrgency(Number(e.target.value))}
+            className="range range-senary w-full"
+          />
+        </div>
+
+        <div className="mb-8">
+          <label className="block text-lg text-gray-700 mb-2">
+            Emotional Impact: {emotionalImpact}
+          </label>
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value={emotionalImpact}
+            onChange={(e) => setEmotionalImpact(Number(e.target.value))}
+            className="range range-septenary w-full"
           />
         </div>
       </div>

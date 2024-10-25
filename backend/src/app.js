@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3003;
 require("dotenv").config();
 const cors = require("cors");
+const authRouter = require("./routes/auth");
 app.use(express.json());
 
 const corsOptions = {
@@ -18,6 +19,7 @@ app.use(cors(corsOptions));
 
 
 app.use("/", apiRouter);
+app.use("/",authRouter)
 
 connectDB()
   .then(() => {

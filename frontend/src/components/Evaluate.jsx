@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link
 
 const Evaluate = () => {
   const [excuse, setExcuse] = useState("");
@@ -65,6 +66,13 @@ const Evaluate = () => {
             Your Excuse Score: <span className="text-green-600">{score}</span>
           </div>
         )}
+
+        {/* Link to Excuse Generator */}
+        <div className="mt-4 text-center">
+          <Link to="/contextualExcuse" className="text-blue-600 hover:underline">
+            Create an Excuse from AI
+          </Link>
+        </div>
       </form>
     </div>
   );

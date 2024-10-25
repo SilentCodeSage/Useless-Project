@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link
 
 const ExcuseGenerator = () => {
   const [situation, setSituation] = useState("");
@@ -90,6 +91,13 @@ const ExcuseGenerator = () => {
           </div>
         </div>
       )}
+
+      {/* Link to SliderComponent for personalized excuse */}
+      <div className="mt-6 text-center">
+        <Link to="/customExcuse" className="text-blue-600 hover:underline">
+          Get a More Personalized Excuse
+        </Link>
+      </div>
     </div>
   );
 };
