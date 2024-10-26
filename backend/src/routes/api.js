@@ -34,7 +34,7 @@ apiRouter.post("/api/evaluate", async (req, res) => {
   try {
     const userPrompt =
       req.body.prompt +
-      ".Out of ten 10 rate this excuse based on how beleivable it is. only give a funny message about the score and the score only";
+      ".Out of ten 10 rate this excuse based on how beleivable it is. only give a  message about the score and the score.Nothing else";
     const apiKey = "AIzaSyARygGMBdAi0o4o6fAWjcayONjunxgU_mU";
     const response = await axios.post(
       `${GeminiContentGenerator}=${apiKey}`,

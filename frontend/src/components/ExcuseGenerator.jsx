@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 
 const ExcuseGenerator = () => {
   const [situation, setSituation] = useState("");
@@ -19,7 +19,7 @@ const ExcuseGenerator = () => {
         prompt: situation,
       });
 
-      console.log("API Response:", response.data); // Log the response
+      console.log("API Response:", response.data);
 
       if (response.data && response.data.candidates && response.data.candidates.length > 0) {
         const text = response.data.candidates[0].content.parts[0].text;
@@ -37,14 +37,14 @@ const ExcuseGenerator = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-yellow-200 to-red-200 p-5">
-      <h2 className="text-5xl font-bold text-center text-gray-800 mb-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-yellow-300 via-pink-300 to-red-400 p-5 animate-gradient-x">
+      <h2 className="text-5xl font-extrabold text-center text-gray-800 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-red-600 animate-text-sparkle">
         Excuse Generator
       </h2>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white rounded-lg shadow-lg p-8 w-full max-w-xl transition-transform transform hover:scale-105"
+        className="bg-white rounded-lg shadow-lg p-8 w-full max-w-xl transform transition-all duration-500 hover:scale-105"
       >
         <label className="block mb-4">
           <span className="text-gray-700 text-lg font-semibold">
@@ -54,13 +54,13 @@ const ExcuseGenerator = () => {
             value={situation}
             onChange={(e) => setSituation(e.target.value)}
             placeholder="Type your situation here..."
-            className="textarea textarea-bordered border-gray-300 bg-gray-50 text-gray-800 rounded-lg py-3 px-4 resize-none h-32 w-full mt-2"
+            className="textarea textarea-bordered border-gray-300 bg-gray-50 text-gray-800 rounded-lg py-3 px-4 resize-none h-32 w-full mt-2 focus:ring-2 focus:ring-yellow-300 transition-all duration-300"
             required
           />
         </label>
         <button
           type="submit"
-          className="w-full py-3 mt-4 text-lg font-semibold text-white bg-gradient-to-r from-yellow-400 to-red-500 rounded-full shadow-lg hover:opacity-90 transition duration-300"
+          className="w-full py-3 mt-4 text-lg font-semibold text-white bg-gradient-to-r from-yellow-400 to-red-500 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-500 ease-out animate-pulse-slow"
         >
           Generate Excuses
         </button>
@@ -76,14 +76,14 @@ const ExcuseGenerator = () => {
 
       {excuses.length > 0 && (
         <div className="mt-8 w-full max-w-xl">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-4 text-center">
+          <h3 className="text-3xl font-semibold text-gray-800 mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-red-600">
             Generated Excuses
           </h3>
           <div className="grid grid-cols-1 gap-4">
             {excuses.map((excuse, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md p-4 text-center transition-transform transform hover:scale-105"
+                className="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-500 hover:scale-105"
               >
                 <p className="text-lg text-gray-700">{excuse}</p>
               </div>
@@ -92,9 +92,8 @@ const ExcuseGenerator = () => {
         </div>
       )}
 
-      {/* Link to SliderComponent for personalized excuse */}
       <div className="mt-6 text-center">
-        <Link to="/customExcuse" className="text-blue-600 hover:underline">
+        <Link to="/customExcuse" className="text-blue-600 text-lg font-semibold hover:underline">
           Get a More Personalized Excuse
         </Link>
       </div>
