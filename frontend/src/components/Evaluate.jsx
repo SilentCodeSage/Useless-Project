@@ -14,9 +14,12 @@ const Evaluate = () => {
 
   const evaluateExcuse = async () => {
     try {
-      const result = await axios.post("http://localhost:3003/api/evaluate", {
-        prompt: excuse,
-      });
+      const result = await axios.post(
+        "https://useless-project-5.onrender.com/api/evaluate",
+        {
+          prompt: excuse,
+        }
+      );
 
       // Assuming the response has a score in a specific structure, adjust as necessary
       const scoreValue = result.data.candidates[0].content.parts[0].text; // Update based on your API response
