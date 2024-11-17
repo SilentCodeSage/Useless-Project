@@ -10,7 +10,7 @@ const authRouter = require("./routes/auth");
 app.use(express.json());
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://useless-project-frontend.onrender.com",
   methods: "GET,POST",
   allowedHeaders: ["Content-Type"],
 };
