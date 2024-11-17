@@ -15,9 +15,12 @@ const ExcuseGenerator = () => {
     setExcuses([]);
 
     try {
-      const response = await axios.post("http://localhost:3003/api/generate", {
-        prompt: situation,
-      });
+      const response = await axios.post(
+        "https://useless-project-5.onrender.com/api/generate",
+        {
+          prompt: situation,
+        }
+      );
 
       console.log("API Response:", response.data);
 
