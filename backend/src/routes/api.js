@@ -58,9 +58,10 @@ apiRouter.post("/api/evaluate", async (req, res) => {
 
 apiRouter.post("/api/generate/custom", async (req, res) => {
   try {
-    const { prompt, sentimentality, absurdity, weatherDetails } = req.body; 
+    const { prompt, sentimentality, absurdity,tone,urgency,emotionalImpact } = req.body; 
+    console.log(sentimentality, absurdity,tone,urgency,emotionalImpact);
     
-    const userPrompt = `${prompt}. Generate exactly ten distinct excuses based on a sentimentality level of ${sentimentality} and an absurdity level of ${absurdity}. Each excuse should be at least 10 words long, with no commas used within any single excuse. The output should be a single string, with each excuse separated by commas.`;
+    const userPrompt = `${prompt}. Generate exactly ten distinct excuses based on a sentimentality level of ${sentimentality} out of 10, an absurdity level of ${absurdity} out of 10, a tone level of ${tone} out of 10, an urgency level of ${urgency} out of 10, and an emotional impact level of ${emotionalImpact} out of 10. Each excuse should be at least 10 words long, with no commas used within any single excuse. The output should be a single string, with each excuse separated by commas.`;
 
     const apiKey = "AIzaSyARygGMBdAi0o4o6fAWjcayONjunxgU_mU";
     const response = await axios.post(
