@@ -4,9 +4,9 @@ import axios from "axios";
 const SliderComponent = () => {
   const [sentimentality, setSentimentality] = useState(5);
   const [absurdity, setAbsurdity] = useState(5);
-  const [tone, setTone] = useState(5); // New tone slider
-  const [urgency, setUrgency] = useState(5); // New urgency slider
-  const [emotionalImpact, setEmotionalImpact] = useState(5); // New emotional impact slider
+  const [tone, setTone] = useState(5);
+  const [urgency, setUrgency] = useState(5);
+  const [emotionalImpact, setEmotionalImpact] = useState(5);
   const [situation, setSituation] = useState("");
   const [excuses, setExcuses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,20 +14,18 @@ const SliderComponent = () => {
   const [locationDetails, setLocationDetails] = useState({});
 
   useEffect(() => {
-    // Fetch location and weather on component mount
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
-        const apiKey = "16dd3aaedf6a386cb63933d7f81edf7b"; // Replace with your weather API key
+        const apiKey = "16dd3aaedf6a386cb63933d7f81edf7b";
         const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
         try {
           const response = await fetch(weatherApiUrl);
           const data = await response.json();
-          const temperature = data.main.temp; // Temperature in Celsius
-          const location = data.name; // Location name, e.g., city
+          const temperature = data.main.temp;
+          const location = data.name;
 
-          // Log location details in the console
           console.log(`Location: ${location}, Temperature: ${temperature}°C`);
           setLocationDetails({ location, temperature });
         } catch (error) {
@@ -65,7 +63,12 @@ const SliderComponent = () => {
   };
 
   return (
-    // JSX content remains unchanged
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-yellow-200 to-red-200 p-5">
+      <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
+        Create Customized Excuses
+      </h2>
+      {/* Include your sliders and other JSX elements here */}
+    </div>
   );
 };
 
