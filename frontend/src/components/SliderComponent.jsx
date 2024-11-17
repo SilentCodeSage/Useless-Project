@@ -44,6 +44,7 @@ const SliderComponent = () => {
     setExcuses([]);
 
     try {
+      // Ensure state values are passed correctly
       const response = await axios.post("https://useless-project-5.onrender.com/api/generate/custom", {
         prompt: situation,
         sentimentality,
