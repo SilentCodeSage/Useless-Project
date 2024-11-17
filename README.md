@@ -1,5 +1,7 @@
 # Excuse Maker Odyssey
 
+[Live Project Link](https://useless-project-frontend.onrender.com)
+
 ![Excuse Maker Logo](https://github.com/user-attachments/assets/35332e92-44cb-425b-9dff-27bcf1023c6c)
 
 ### Team Members
@@ -31,13 +33,4 @@ The app generates context-aware excuses with an easy-to-use slider to adjust abs
 ---
 
 ## API Implementations
-- **Evaluate Excuse API** - Analyzes and scores generated excuses for believability.
-  
----
-
-## Installation & Usage
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-username/ExcuseMaker.git
-   cd ExcuseMaker
+- **Evaluate Excuse API** - Analyzes and scores generated excuses for belie
